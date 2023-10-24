@@ -24,6 +24,7 @@ namespace AlgorithmLab2
     {
         static int _depth;
         static string _name;
+
         public FractalMenu(int depth)
         {
             _depth = depth;

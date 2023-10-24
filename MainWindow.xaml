@@ -32,7 +32,6 @@
             </StackPanel>
             
 
-           
             <Frame x:Name="frameFractal" Grid.Row="1"/>
         </DockPanel>
     </Grid>
