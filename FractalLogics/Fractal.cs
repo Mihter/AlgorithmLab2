@@ -11,21 +11,35 @@ using System.Windows.Shapes;
 
 namespace AlgorithmLab2.FractalLogics
 {
-    internal class Fractal : Canvas
+    internal class Fractal
     {
-        private static int currentDepth = 0;
-        Square square = new Square()
+        public static void Draw(int depth)//800x800 400middle
         {
-            topLeft = Point.Empty,
-            bottomLeft = Point.Empty,
-            bottomRight = Point.Empty,
-            topRight = Point.Empty
-        };
-        public static void CalculateLayer(Square square, int depth)
+            double multiplier = 1;
+
+            for (double i = 2, multiplierGrowth = 1; i <= depth; i++)
+            {
+                multiplierGrowth /= 2;
+                multiplier += multiplierGrowth;
+            }
+            int plainSize = Convert.ToInt32(800/(2*multiplier-1));
+
+            Square square = new Square()
+            {
+                bottomLeft = new Point(400 - plainSize / 2, 0),
+                bottomRight = new Point(400 + plainSize / 2, 0),
+                topLeft = new Point(400 - plainSize / 2, plainSize),
+                topRight = new Point(400 + plainSize / 2, plainSize)
+            };
+            BuildLayer(square, depth);
+
+        }
+
+        public static void BuildLayer(Square square, int depth)
         {
-            if (depth == currentDepth)
+
+            if (depth == 0)
                 return;//TODO
-            currentDepth++;
 
 
             Point halfDiagonal = new Point()//right up
@@ -79,19 +93,23 @@ namespace AlgorithmLab2.FractalLogics
                     Y = square.topRight.Y + halfDiagonal.Y + halfDiagonal.Y
                 },
             };
+
             //дровка
             Square.DrawSquare(squareLeft);
             Square.DrawSquare(squareRight);
+
+            BuildLayer(squareLeft, depth - 1);
+            BuildLayer(squareRight, depth - 1);
 
         }
         
     }
     class Square
     {
-        public Point topLeft;
-        public Point bottomLeft;
-        public Point topRight;
-        public Point bottomRight;
+        public required Point topLeft;
+        public required Point bottomLeft;
+        public required Point topRight;
+        public required Point bottomRight;
         public static void DrawSquare(Square square)
         {
 
