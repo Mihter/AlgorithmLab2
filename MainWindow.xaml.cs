@@ -20,19 +20,37 @@ namespace AlgorithmLab2
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+        
+        private void FractalButton_Click(object sender, RoutedEventArgs e)
+        {
+            int depth;
+            if (int.TryParse(depthTextBox.Text, out depth))
+            {
+                frame.Navigate(new FractalMenu(depth));
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, введите корректное значение глубины.\nВведенно неверное значение глубины или вовсе отсутствует.");
+            }
         }
 
         private void HoannoiButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void FractalButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            int depth;
+            if (int.TryParse(depthTextBox.Text, out depth))
+            {
+                frame.Navigate(new HannoiMenu(depth));
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, введите корректное значение глубины.\nВведенно неверное значение глубины или вовсе отсутствует.");
+            }
         }
     }
 }
