@@ -37,8 +37,8 @@ namespace AlgorithmLab2
             switch (name)
             {
                 case "pifagor_tree":
-                    //fractal.DrawPifagorTree(, _depth);
-                    //Content = fractal;
+                    fractal.DrawPifagorTree(new Point(400, 500), new Point(600, 500), new Point(600, 700), new Point(400, 700), _depth);
+                    Content = fractal;
                     break;
                 case "levi_curve":
                     fractal.DrawLeviCurve(new Point(300, 450), new Point(700, 450), _depth);

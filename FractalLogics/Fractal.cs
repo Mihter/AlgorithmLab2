@@ -17,6 +17,33 @@ namespace AlgorithmLab2.FractalLogics
 {
     internal class Fractal: Canvas
     {
+        public void DrawPifagorTree(System.Windows.Point p1, System.Windows.Point p2, System.Windows.Point p3, System.Windows.Point p4, int depth)
+        {
+            if (depth == 0)
+            {
+                // Отрисовываем квадрат
+                var polygon = new Polygon();
+                polygon.Points.Add(p1);
+                polygon.Points.Add(p2);
+                polygon.Points.Add(p3);
+                polygon.Points.Add(p4);
+                polygon.Stroke = Brushes.DarkGreen;
+                polygon.StrokeThickness = 1;
+                this.Children.Add(polygon);
+            }
+            else
+            {
+                //TODO просчтитываем поворот на 45% текущего отрезка
+                var cos45 = Math.Sqrt(2)/2;
+                var p1Rotate = new System.Windows.Point(p1.X - (p3.X - p1.X) / 2 /*+ (p3.Y - p1.Y) / 2*/, p1.Y - (p3.Y - p1.Y) / 2);
+                var p2test = new System.Windows.Point(p1.X - (p3.X - p1.X) / 2 + (p3.Y - p1.Y) / 2, 300);
+                var p3Rotate = new System.Windows.Point((p1.X + p2.X) / 2 + (p2.Y - p1.Y) / 2, p1.Y - (p3.Y - p1.Y)/2 );
+                var p4test = p1;
+
+                DrawPifagorTree(p1Rotate, p2test,p3Rotate, p4test, depth - 1);
+                DrawPifagorTree(p1, p2, p3, p4, depth - 1);
+            }
+        }
 
         public void DrawLeviCurve(System.Windows.Point p1, System.Windows.Point p2, int depth)
         {
@@ -49,7 +76,7 @@ namespace AlgorithmLab2.FractalLogics
                 var polygon = new Polygon();
                 polygon.Points.Add(p1);
                 polygon.Points.Add(p2);
-                polygon.Stroke = Brushes.DarkGreen;
+                polygon.Stroke = Brushes.Red;
                 polygon.StrokeThickness = 1;
                 this.Children.Add(polygon);
             }
