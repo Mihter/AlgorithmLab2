@@ -23,7 +23,7 @@ namespace AlgorithmLab2.FractalLogics
             if (depth == 0)
             {
                 // Отрисовываем отрезок
-                 var polygon = new Polygon();
+                var polygon = new Polygon();
                 polygon.Points.Add(p1);
                 polygon.Points.Add(p2);
                 polygon.Stroke = Brushes.DarkGreen;
@@ -32,12 +32,13 @@ namespace AlgorithmLab2.FractalLogics
             }
             else
             {
-            // просчтитываем поворот на 45% текущего отрезка
-                var mid1 = new System.Windows.Point((p1.X + p2.X) / 2 + (p2.Y - p1.Y) / 2, (p1.Y + p2.Y) / 2  - (p2.X - p1.X) / 2);
-                
+                // просчтитываем поворот на 45% текущего отрезка
+                var mid1 = new System.Windows.Point((p1.X + p2.X) / 2 + (p2.Y - p1.Y) / 2, (p1.Y + p2.Y) / 2 - (p2.X - p1.X) / 2);
+
                 DrawLeviCurve(p1, mid1, depth - 1);
                 DrawLeviCurve(mid1, p2, depth - 1);
             }
+        }
 
         public void Minkowski(System.Windows.Point p1, System.Windows.Point p2, int depth)
         {
