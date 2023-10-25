@@ -33,7 +33,7 @@ namespace AlgorithmLab2
 
         public void InitializeFractal(string name)
         {
-            Fractal fractalCanvas = new Fractal();
+            Fractal fractal = new Fractal();
             switch (name)
             {
                 case "pifagor_tree":
@@ -45,8 +45,8 @@ namespace AlgorithmLab2
                     //Content = fractal;
                     break;
                 case "minkovscogo_curve":
-                    //fractal.DrawMinkovscogoCurve(_depth, );
-                    //Content = fractal;
+                    fractal.Minkowski(new Point(250,250), new Point(750,250), _depth);
+                    Content = fractal;
                     break;
             }
         }
