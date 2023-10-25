@@ -28,7 +28,7 @@ namespace AlgorithmLab2
         public FractalMenu(int depth)
         {
             _depth = depth;
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         public void InitializeFractal(string name)
@@ -41,8 +41,8 @@ namespace AlgorithmLab2
                     //Content = fractal;
                     break;
                 case "levi_curve":
-                    //fractal.DrawLeviCurve(_depth, );
-                    //Content = fractal;
+                    fractal.DrawLeviCurve(new Point(300, 450), new Point(700, 450), _depth);
+                    Content = fractal;
                     break;
                 case "minkovscogo_curve":
                     fractal.Minkowski(new Point(250,250), new Point(750,250), _depth);
