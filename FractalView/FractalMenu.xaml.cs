@@ -28,25 +28,25 @@ namespace AlgorithmLab2
         public FractalMenu(int depth)
         {
             _depth = depth;
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         public void InitializeFractal(string name)
         {
-            Fractal fractalCanvas = new Fractal();
+            Fractal fractal = new Fractal();
             switch (name)
             {
                 case "pifagor_tree":
-                    //fractal.DrawPifagorTree(, _depth);
-                    //Content = fractal;
+                    fractal.DrawPifagorTree(new Point(400, 500), new Point(600, 500), new Point(600, 700), new Point(400, 700), _depth);
+                    Content = fractal;
                     break;
                 case "levi_curve":
-                    //fractal.DrawLeviCurve(_depth, );
-                    //Content = fractal;
+                    fractal.DrawLeviCurve(new Point(300, 450), new Point(700, 450), _depth);
+                    Content = fractal;
                     break;
                 case "minkovscogo_curve":
-                    //fractal.DrawMinkovscogoCurve(_depth, );
-                    //Content = fractal;
+                    fractal.Minkowski(new Point(250,250), new Point(750,250), _depth);
+                    Content = fractal;
                     break;
             }
         }
